@@ -1,0 +1,116 @@
+﻿@page "/"
+
+@using LandMines.Model
+@using LandMines.Components
+@using LandMines.BusinessLogic
+
+<h1>Landminer Game</h1>
+
+<style>
+    body {
+        background-color: #ABBAEA;
+    }
+    /* Create four equal columns that floats next to each other */
+    .column {
+          float: left;
+        width: 50%;
+    }
+    .columnRoRight {
+          float: right;
+        width: 30%;
+    }
+
+    /* Clear floats */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .grid {
+        width:300px;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    div > div {
+        padding: 1px;
+        /*background-color: #ccc;*/
+    }
+</style>
+
+
+@{ 
+    var index = 0;
+}
+
+<div class="row">
+    <div class="column">
+        @for (int row = 0; row < GameEngine.BoardRowsNumber; row++)
+        {
+            <tr>
+                @for (int col = 0; col < GameEngine.BoardColumnsNumber; col++)
+                {
+                    @*index = (row + 1) * (col + 1) - 1;*@
+                    <td>
+                        <BoardField ColorType=@GameEngine.Fields[index].ColorType
+                            RowIndex=@GameEngine.Fields[index].RowIndex
+                            ColumnIndex=@GameEngine.Fields[index].ColumnIndex
+                            IconUrl=@GameEngine.Fields[index].PlayerIcon
+                            CellIndex=@GameEngine.Fields[index].FieldId
+                            BackgroundIcon=@GameEngine.Fields[index].BackgroundIcon
+                            IsMineExploded=@GameEngine.Fields[index].IsLandMineExploded />
+                    </td>
+                    index++;
+                }
+            </tr>
+
+
+        }
+
+    </div>
+    <div class="columnRoRight">
+        <p>@GameSummaryMessage</p>
+        <br><br><br>
+        
+        <div class="grid">
+            <div></div>
+            <div><button style="width:100px;" @onclick="() => ButtonClicked(Direction.Up)">Up</button></div>
+            <div></div>
+            <div><button style="width:100px;" @onclick="() => ButtonClicked(Direction.Left)">Left</button></div>
+            <div></div>
+            <div><button style="width:100px;" @onclick="() => ButtonClicked(Direction.Right)">Right</button></div>
+            <div></div>
+            <div><button style="width:100px;" @onclick="() => ButtonClicked(Direction.Down)">Down</button></div>
+            <div></div>
+        </div>
+        <br><br><br><br><br>
+        <a>Player location: row [@PlayerCurrentRow]   column[@PlayerCurrentColumn]</a>
+        <br><br><br><br>
+        <a>Player Name</a><br>
+        <textarea @bind=@PlayerName></textarea><br>
+        <a>Number of lives</a><br>
+        <textarea @bind=@NumberOfLifes></textarea><br>
+        <a>Number Of landmines</a><br>
+        <textarea @bind=@NumberOfMines></textarea><br>
+
+        <br><br>
+        
+        <button @onclick=@StartNewGameClicked>New Game</button>
+         
+
+
+        
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

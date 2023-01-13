@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\repos\\blazor\\LandMines\\LandMines\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.LandMines.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.LandMines.props",
+      "PackagePath": "build\\LandMines.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.LandMines.props",
+      "PackagePath": "buildMultiTargeting\\LandMines.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.LandMines.props",
+      "PackagePath": "buildTransitive\\LandMines.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
